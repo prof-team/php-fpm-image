@@ -25,6 +25,9 @@ RUN apt-get install -y libmemcached-dev zlib1g-dev
 RUN pecl install memcached
 RUN docker-php-ext-enable memcached
 
+# Install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 RUN apt-get clean && apt-get autoclean && apt-get autoremove -y
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
