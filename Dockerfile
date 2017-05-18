@@ -2,16 +2,17 @@ FROM php:7.1-fpm
 
 RUN apt-get update
 
+RUN apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libmcrypt-dev \
+        libpng12-dev \
+    && docker-php-ext-install -j$(nproc) iconv mcrypt \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd
+
 # Some basic extensions
 RUN docker-php-ext-install -j$(nproc) json mbstring opcache pdo pdo_mysql mysqli
-
-# Curl
-RUN apt-get install -y libcurl4-openssl-dev
-RUN docker-php-ext-install -j$(nproc) curl
-
-# GD
-RUN apt-get install -y libpng-dev libjpeg-dev
-RUN docker-php-ext-install -j$(nproc) gd
 
 # Intl
 RUN apt-get install -y libicu-dev
