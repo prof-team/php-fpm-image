@@ -32,8 +32,14 @@ RUN pecl install apcu \
     && docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini \
     && docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
 
+# Install mongo
+RUN apt-get update && apt-get install -y \
+        libssl-dev \
+    && pecl install mongo \
+    && docker-php-ext-enable mongo
+
+# Install ldap
 RUN apt-get install libldap2-dev -y && \
-    rm -rf /var/lib/apt/lists/* && \
     docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
     docker-php-ext-install ldap
 
