@@ -35,8 +35,8 @@ RUN pecl install apcu \
 # Install mongo
 RUN apt-get update && apt-get install -y \
         libssl-dev \
-    && pecl install mongo \
-    && docker-php-ext-enable mongo
+    && pecl install mongodb \
+    && docker-php-ext-enable mongodb
 
 # Install ldap
 RUN apt-get install libldap2-dev -y && \
