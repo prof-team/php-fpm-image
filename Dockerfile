@@ -4,7 +4,7 @@ RUN apt-get update
 
 RUN apt-get install -y \
         git \
-        openssh \
+        openssh-server \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
