@@ -4,6 +4,7 @@ RUN apt-get update
 
 RUN apt-get install -y \
         git \
+        openssh \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
@@ -53,7 +54,7 @@ RUN docker-php-ext-install exif
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN apt-get clean && apt-get autoclean && apt-get autoremove -y
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apk/*
 
 ADD php.ini /usr/local/etc/php/conf.d/
 ADD www.conf /usr/local/etc/php-fpm.d/
