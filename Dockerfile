@@ -59,7 +59,7 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apk/*
 ADD php.ini /usr/local/etc/php/conf.d/
 ADD www.conf /usr/local/etc/php-fpm.d/
 
-RUN chown -R www-data:www-data /var/www
+RUN rm -rf /var/www/* && chown -R www-data:www-data /var/www
 
 WORKDIR /var/www
 
