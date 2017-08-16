@@ -3,6 +3,7 @@ FROM php:7.1-fpm
 RUN apt-get update
 
 RUN apt-get install -y \
+        nano \
         git \
         openssh-server \
         libfreetype6-dev \
@@ -52,6 +53,8 @@ RUN docker-php-ext-install exif
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# parallel install plugin
+RUN composer global require hirak/prestissimo
 
 RUN apt-get clean && apt-get autoclean && apt-get autoremove -y
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apk/*
