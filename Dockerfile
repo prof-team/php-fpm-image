@@ -31,9 +31,7 @@ RUN docker-php-ext-enable memcached
 
 # Install APCu and APC backward compatibility
 RUN pecl install apcu \
-    && pecl install apcu_bc-1.0.3 \
-    && docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini \
-    && docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
+    && docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini
 
 # Install mongo
 RUN apt-get update && apt-get install -y \
@@ -59,7 +57,7 @@ RUN composer global require hirak/prestissimo
 RUN apt-get clean && apt-get autoclean && apt-get autoremove -y
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apk/*
 
-ADD php.ini /usr/local/etc/php/conf.d/
+ADD ./conf.d/*.ini /usr/local/etc/php/conf.d/
 ADD www.conf /usr/local/etc/php-fpm.d/
 
 RUN rm -rf /var/www/* && chown -R www-data:www-data /var/www
