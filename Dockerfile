@@ -63,7 +63,3 @@ ADD www.conf /usr/local/etc/php-fpm.d/
 RUN rm -rf /var/www/* && chown -R www-data:www-data /var/www
 
 WORKDIR /var/www
-
-CMD ["php-fpm"]
-
-EXPOSE 9000
