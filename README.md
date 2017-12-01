@@ -6,4 +6,4 @@
 
 2. Now you can run image
 
-`docker run -it grischuksasha/php-fpm sh`
+`docker run -it grischuksasha/php-fpm bash`
