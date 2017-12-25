@@ -70,7 +70,7 @@ COPY ./xhprof/*.php /var/xhprof/
 VOLUME /var/xhprof
 
 RUN apt-get clean && apt-get autoclean && apt-get autoremove -y
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/www/html
 RUN mkdir /var/tmp/xhprof && chmod 777 /var/tmp/xhprof
 
 ADD ./conf.d/*.ini /usr/local/etc/php/conf.d/
