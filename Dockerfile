@@ -28,9 +28,11 @@ RUN apt-get install -y libmemcached-dev zlib1g-dev
 RUN pecl install memcached
 RUN docker-php-ext-enable memcached
 
-# Install APCu
+# Install APCu and APC backward compatibility
 RUN pecl install apcu \
-    && docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini
+    && pecl install apcu_bc-1.0.3 \
+    && docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini \
+    && docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
 
 # Install mongo
 RUN apt-get update && apt-get install -y \
