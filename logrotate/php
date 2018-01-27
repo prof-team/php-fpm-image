@@ -1,0 +1,12 @@
+/var/log/php/*.log {
+  daily
+  rotate 30
+  missingok
+  compress
+  delaycompress
+  notifempty
+  create 640 root root
+  postrotate
+    /bin/kill -USR2 1
+  endscript
+}

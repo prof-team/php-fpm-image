@@ -3,6 +3,7 @@ FROM php:7.1-fpm
 RUN apt-get update
 
 RUN apt-get install -y \
+        logrotate \
         nano \
         git \
         libfreetype6-dev \
@@ -79,6 +80,8 @@ RUN mkdir /var/tmp/xhprof && chmod 777 /var/tmp/xhprof
 ADD ./conf.d/*.ini /usr/local/etc/php/conf.d/
 ADD ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/
 ADD php-fpm.conf /usr/local/etc/
+
+ADD ./logrotate/php /etc/logrotate.d/php
 
 RUN chown -R www-data:www-data /var/www
 
