@@ -8,11 +8,12 @@ RUN apt-get install -y \
         git \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
-        libmcrypt-dev \
         libpng-dev
 
-RUN docker-php-ext-configure mcrypt
-RUN docker-php-ext-install -j$(nproc) iconv mcrypt
+RUN pecl install mcrypt-1.0.1
+RUN docker-php-ext-enable mcrypt
+
+RUN docker-php-ext-install -j$(nproc) iconv
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN docker-php-ext-install -j$(nproc) gd
 
