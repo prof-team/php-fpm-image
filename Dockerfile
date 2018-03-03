@@ -8,6 +8,7 @@ RUN apt-get install -y \
         git \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
+        libmcrypt-dev \
         libpng-dev
 
 RUN pecl install mcrypt-1.0.1
