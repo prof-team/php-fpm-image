@@ -19,7 +19,8 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
 RUN docker-php-ext-install -j$(nproc) gd
 
 # Some basic extensions
-RUN docker-php-ext-install -j$(nproc) json mbstring opcache pdo pdo_mysql pdo_pgsql mysqli
+RUN docker-php-ext-install -j$(nproc) json mbstring opcache pdo pdo_mysql mysqli
+RUN docker-php-ext-install pdo_pgsql
 
 # Intl
 RUN apt-get install -y libicu-dev
