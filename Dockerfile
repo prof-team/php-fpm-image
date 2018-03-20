@@ -20,7 +20,10 @@ RUN docker-php-ext-install -j$(nproc) gd
 
 # Some basic extensions
 RUN docker-php-ext-install -j$(nproc) json mbstring opcache pdo pdo_mysql mysqli
-RUN docker-php-ext-install pdo_pgsql
+
+# pgsql
+RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pgsql pdo_pgsql
 
 # Intl
 RUN apt-get install -y libicu-dev
