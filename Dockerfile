@@ -3,6 +3,7 @@ FROM php:7.2-fpm
 RUN apt-get update
 
 RUN apt-get install -y \
+        supervisor \
         logrotate \
         nano \
         git \
@@ -21,7 +22,7 @@ RUN docker-php-ext-install -j$(nproc) gd
 # Some basic extensions
 RUN docker-php-ext-install -j$(nproc) json mbstring opcache pdo pdo_mysql mysqli
 
-# pgsql
+# Install pgsql
 RUN apt-get install -y libpq-dev \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install pdo_pgsql pgsql
