@@ -6,6 +6,7 @@ RUN apt-get install -y \
         supervisor \
         logrotate \
         nano \
+        htop \
         git \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
