@@ -7,6 +7,6 @@
   notifempty
   create 640 root root
   postrotate
-    /bin/kill -USR2 1
+    kill -USR2 1
   endscript
 }
