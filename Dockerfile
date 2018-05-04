@@ -103,6 +103,7 @@ ADD php-fpm.conf /usr/local/etc/
 
 ADD ./logrotate/php /etc/logrotate.d/php
 
+RUN rm -rf /var/www/html
 RUN chown -R www-data:www-data /var/www
 
 WORKDIR /var/www
