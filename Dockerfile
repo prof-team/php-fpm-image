@@ -89,7 +89,6 @@ VOLUME /var/xhprof
 
 RUN apt-get clean && apt-get autoclean && apt-get autoremove -y
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN rm -rf /var/www/html
 RUN mkdir /var/tmp/xhprof && chmod 777 /var/tmp/xhprof
 RUN mkdir -p /var/log/php
 
