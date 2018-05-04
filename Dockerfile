@@ -58,7 +58,11 @@ RUN apt-get install libldap2-dev -y && \
     docker-php-ext-install ldap
 
 # Install zip
-RUN apt-get install -y zlib1g-dev && docker-php-ext-install zip
+RUN apt-get install -y \
+        libzip-dev \
+        zip \
+  && docker-php-ext-configure zip --with-libzip \
+  && docker-php-ext-install zip
 
 RUN docker-php-ext-install exif
 
@@ -90,7 +94,11 @@ RUN mkdir /var/tmp/xhprof && chmod 777 /var/tmp/xhprof
 RUN mkdir -p /var/log/php
 
 ADD ./conf.d/*.ini /usr/local/etc/php/conf.d/
+
+RUN rm /usr/local/etc/php-fpm.d/*
 ADD ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/
+
+RUN rm /usr/local/etc/php-fpm.conf.default
 ADD php-fpm.conf /usr/local/etc/
 
 ADD ./logrotate/php /etc/logrotate.d/php
