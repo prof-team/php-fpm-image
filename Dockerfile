@@ -4,7 +4,6 @@ RUN apt-get update
 
 RUN apt-get install -y \
         supervisor \
-        logrotate \
         nano \
         htop \
         git \
@@ -99,8 +98,6 @@ ADD ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/
 
 RUN rm /usr/local/etc/php-fpm.conf.default
 ADD php-fpm.conf /usr/local/etc/
-
-ADD ./logrotate/php /etc/logrotate.d/php
 
 RUN chown -R www-data:www-data /var/www
 
