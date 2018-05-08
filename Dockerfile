@@ -102,7 +102,12 @@ ADD php-fpm.conf /usr/local/etc/
 
 ADD ./logrotate/php /etc/logrotate.d/php
 
-RUN rm -rf /var/www/html
 RUN chown -R www-data:www-data /var/www
 
+COPY docker-entrypoint.sh /entrypoint.sh
+
 WORKDIR /var/www
+RUN rm -rf /var/www/html
+
+ENTRYPOINT ["sh", "/entrypoint.sh"]
+CMD ["php-fpm"]
