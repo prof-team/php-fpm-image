@@ -31,7 +31,7 @@ version: '3'
 services:
   php:
     image: grischuksasha/php-fpm:7.2
-    container_name: dev-writer-php
+    container_name: php
     cap_add:
       - SYS_PTRACE
     environment:
