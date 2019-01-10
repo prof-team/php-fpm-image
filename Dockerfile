@@ -13,9 +13,6 @@ RUN apt-get install -y \
         libmcrypt-dev \
         libpng-dev
 
-RUN pecl install mcrypt-1.0.1
-RUN docker-php-ext-enable mcrypt
-
 RUN docker-php-ext-install -j$(nproc) iconv
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 RUN docker-php-ext-install -j$(nproc) gd
@@ -73,23 +70,8 @@ RUN composer global require hirak/prestissimo
 # yii2 plugin
 RUN composer global require "fxp/composer-asset-plugin:^1.3.1" --no-plugins;
 
-# install xhprof
-RUN rm -rf /var/xhprof && \
-    mkdir /var/xhprof && \
-    cd /var/xhprof && \
-    git clone https://github.com/RustJason/xhprof . && \
-    git checkout php7 && \
-    cd extension && \
-    phpize && \
-    ./configure --with-php-config=/usr/local/bin/php-config && \
-    make && \
-    make install
-COPY ./xhprof/*.php /var/xhprof/
-VOLUME /var/xhprof
-
 RUN apt-get clean && apt-get autoclean && apt-get autoremove -y
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN mkdir /var/tmp/xhprof && chmod 777 /var/tmp/xhprof
 RUN mkdir -p /var/log/php
 
 ADD ./conf.d/*.ini /usr/local/etc/php/conf.d/
