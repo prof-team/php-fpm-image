@@ -49,4 +49,8 @@ if [ -n "$INI_MAX_EXECUTION_TIME" ]; then
     sed -i "s/request_terminate_timeout.*/request_terminate_timeout = $INI_MAX_EXECUTION_TIME/" /usr/local/etc/php-fpm.d/www.conf
 fi
 
+if [ -f /custom-entrypoint.sh ]; then
+    bash /custom-entrypoint.sh
+fi
+
 exec "$@"
