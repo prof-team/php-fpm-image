@@ -3,7 +3,8 @@ FROM php:7.3-fpm
 RUN apt-get update
 
 RUN apt-get install -y \
-        supervisor \
+        cron \
+        python-setuptools \
         nano \
         htop \
         git \
@@ -12,6 +13,10 @@ RUN apt-get install -y \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
         libpng-dev
+
+RUN easy_install pip \
+    && pip install supervisor \
+    && pip install superslacker
 
 RUN docker-php-ext-install -j$(nproc) iconv
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
@@ -85,6 +90,7 @@ ADD php-fpm.conf /usr/local/etc/
 RUN chown -R www-data:www-data /var/www
 
 COPY docker-entrypoint.sh /entrypoint.sh
+ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 WORKDIR /var/www
 RUN rm -rf /var/www/html
