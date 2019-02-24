@@ -8,6 +8,7 @@ build:
   before_script:
     - docker login -u $DOCKER_LOGIN -p$DOCKER_PASS
   script:
-    - printenv
-    - docker build -t profteam/php-fpm .
-    - docker push profteam/php-fpm
+    - if [ "$CI_COMMIT_REF_NAME" = "master" ]; then TAG="latest" else TAG=$CI_COMMIT_REF_NAME fi
+    - echo $TAG
+    - docker build -t profteam/php-fpm:$TAG .
+    - docker push profteam/php-fpm:$TAG
