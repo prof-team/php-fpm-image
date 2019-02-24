@@ -1,0 +1,13 @@
+image: docker:stable
+
+stages:
+  - build
+
+build:
+  stage: build
+  before_script:
+    - docker login -u $DOCKER_LOGIN -p$DOCKER_PASS
+  script:
+    - printenv
+    - docker build -t profteam/php-fpm .
+    - docker push profteam/php-fpm
