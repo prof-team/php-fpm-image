@@ -1,6 +1,6 @@
 # php-fpm docker
 
-1. Pull image from [docker hub](https://hub.docker.com/r/profteam/php-fpm)
+1. Pull image from [docker hub](https://hub.docker.com/r/profteam/php-fpm/)
 
 `docker pull profteam/php-fpm`
 
@@ -30,7 +30,7 @@ version: '3'
 
 services:
   php:
-    image: profteam/php-fpm:7.2
+    image: profteam/php-fpm:latest
     container_name: php
     cap_add:
       - SYS_PTRACE
