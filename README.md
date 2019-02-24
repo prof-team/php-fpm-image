@@ -1,12 +1,12 @@
 # php-fpm docker
 
-1. Pull image from [docker hub](https://hub.docker.com/r/grischuksasha/php-fpm/)
+1. Pull image from [docker hub](https://hub.docker.com/r/profteam/php-fpm/)
 
-`docker pull grischuksasha/php-fpm`
+`docker pull profteam/php-fpm`
 
 2. Now you can run image
 
-docker run -it grischuksasha/php-fpm bash
+docker run -it profteam/php-fpm bash
 
 ## Environment Variables
 ```
@@ -30,7 +30,7 @@ version: '3'
 
 services:
   php:
-    image: grischuksasha/php-fpm:7.2
+    image: profteam/php-fpm:7.2
     container_name: php
     cap_add:
       - SYS_PTRACE
