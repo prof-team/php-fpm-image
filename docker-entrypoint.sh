@@ -49,6 +49,13 @@ if [ -n "$INI_MAX_EXECUTION_TIME" ]; then
     sed -i "s/request_terminate_timeout.*/request_terminate_timeout = $INI_MAX_EXECUTION_TIME/" /usr/local/etc/php-fpm.d/www.conf
 fi
 
+# Enable xdebug
+if [ "$INI_XDEBUG" -eq 1 ] && [ -z "$(php -m | grep -i xdebug)" ]; then
+    docker-php-ext-enable xdebug
+else
+    rm  /usr/local/etc/php/conf.d/xdebug.ini
+fi
+
 if [ -f /custom-entrypoint.sh ]; then
     bash /custom-entrypoint.sh
 fi
