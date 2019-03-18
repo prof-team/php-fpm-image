@@ -50,9 +50,7 @@ if [ -n "$INI_MAX_EXECUTION_TIME" ]; then
 fi
 
 # Enable xdebug
-if [ "$INI_XDEBUG" -eq 1 ] && [ -z "$(php -m | grep -i xdebug)" ]; then
-    docker-php-ext-enable xdebug
-else
+if [ -z "$INI_XDEBUG" ] || [ "$INI_XDEBUG" -eq 0 ]; then
     rm  /usr/local/etc/php/conf.d/xdebug.ini
 fi
 
