@@ -51,7 +51,7 @@ fi
 
 # Enable xdebug
 if [ -z "$INI_XDEBUG" ] || [ "$INI_XDEBUG" -eq 0 ]; then
-    rm  /usr/local/etc/php/conf.d/xdebug.ini
+    rm -f /usr/local/etc/php/conf.d/xdebug.ini
 fi
 
 if [ -f /custom-entrypoint.sh ]; then
