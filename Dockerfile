@@ -42,6 +42,9 @@ RUN apt-get install -y libmemcached-dev zlib1g-dev
 RUN pecl install memcached
 RUN docker-php-ext-enable memcached
 
+# Install PECL Redis
+RUN pecl install redis && docker-php-ext-enable redis
+
 # Install APCu and APC backward compatibility
 RUN pecl install apcu \
     && pecl install apcu_bc-1.0.3 \
