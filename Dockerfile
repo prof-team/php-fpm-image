@@ -76,11 +76,10 @@ RUN pecl install xdebug
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- \
         --filename=composer.phar \
-        --install-dir=/usr/local/bin && \
-    composer clear-cache
+        --install-dir=/usr/local/bin
 
 # Install composer plugins
-RUN composer global require --optimize-autoloader "hirak/prestissimo:${VERSION_PRESTISSIMO_PLUGIN}" && \
+RUN composer global require --optimize-autoloader "hirak/prestissimo" && \
     composer global require "fxp/composer-asset-plugin:^1.4.6" --no-plugins && \
     composer global dumpautoload --optimize && \
     composer clear-cache
