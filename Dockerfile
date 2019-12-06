@@ -1,4 +1,4 @@
-FROM php:7.3-fpm
+FROM php:7.4-fpm
 
 RUN apt-get update
 
@@ -17,12 +17,8 @@ RUN apt-get install -y \
 RUN pip install supervisor \
     && pip install superslacker
 
-RUN docker-php-ext-install -j$(nproc) iconv
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-RUN docker-php-ext-install -j$(nproc) gd
-
 # Some basic extensions
-RUN docker-php-ext-install -j$(nproc) json mbstring opcache pdo pdo_mysql mysqli
+RUN docker-php-ext-install -j$(nproc) json opcache pdo pdo_mysql mysqli
 
 # Install pgsql
 RUN apt-get install -y libpq-dev \
@@ -65,7 +61,7 @@ RUN apt-get install libldap2-dev -y && \
 RUN apt-get install -y \
         libzip-dev \
         zip \
-  && docker-php-ext-configure zip --with-libzip \
+  && docker-php-ext-configure zip \
   && docker-php-ext-install zip
 
 RUN docker-php-ext-install exif
