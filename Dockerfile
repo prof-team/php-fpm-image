@@ -4,7 +4,7 @@ RUN apt-get update
 
 RUN apt-get install -y \
         cron \
-        python-setuptools \
+        python-pip \
         nano \
         htop \
         git \
@@ -14,8 +14,7 @@ RUN apt-get install -y \
         libmcrypt-dev \
         libpng-dev
 
-RUN easy_install pip \
-    && pip install supervisor \
+RUN pip install supervisor \
     && pip install superslacker
 
 RUN docker-php-ext-install -j$(nproc) iconv
