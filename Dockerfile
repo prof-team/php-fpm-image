@@ -82,11 +82,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 
 # Install composer plugins
 RUN composer global require --optimize-autoloader "hirak/prestissimo:${VERSION_PRESTISSIMO_PLUGIN}" && \
+    composer global require "fxp/composer-asset-plugin:^1.4.6" --no-plugins && \
     composer global dumpautoload --optimize && \
     composer clear-cache
-
-# yii2 plugin
-RUN composer global require "fxp/composer-asset-plugin:^1.3.1" --no-plugins;
 
 RUN apt-get clean && apt-get autoclean && apt-get autoremove -y
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
