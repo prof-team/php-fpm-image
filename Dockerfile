@@ -75,7 +75,7 @@ RUN pecl install xdebug
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- \
-        --filename=composer.phar \
+        --filename=composer \
         --install-dir=/usr/local/bin
 
 # Install composer plugins
