@@ -50,7 +50,7 @@ if [ -n "$INI_MAX_EXECUTION_TIME" ]; then
 fi
 
 # Disable xdebug
-if [ -z "$INI_XDEBUG" ] || [ "$INI_XDEBUG" -eq 0 ]; then
+if [ -z "$XDEBUG_CONFIG" ]; then
     rm -f /usr/local/etc/php/conf.d/xdebug.ini
 fi
 
