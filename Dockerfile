@@ -75,8 +75,6 @@ RUN pecl install redis && docker-php-ext-enable redis
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-# parallel install plugin
-RUN composer global require hirak/prestissimo
 # yii2 plugin
 RUN composer global require "fxp/composer-asset-plugin:^1.3.1" --no-plugins;
 
