@@ -76,7 +76,7 @@ RUN pecl install redis && docker-php-ext-enable redis
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # yii2 plugin
-RUN composer global require "fxp/composer-asset-plugin:^1.3.1" --no-plugins;
+RUN composer global require "fxp/composer-asset-plugin:^1.4.6" --no-plugins;
 
 # install xhprof
 RUN rm -rf /var/xhprof && \
