@@ -30,7 +30,7 @@ version: '3'
 
 services:
   php:
-    image: profteam/php-fpm:7.3
+    image: profteam/php-fpm:7.0
     container_name: php
     cap_add:
       - SYS_PTRACE
