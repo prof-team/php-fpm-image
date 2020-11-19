@@ -85,8 +85,9 @@ RUN apt-get install -y \
 RUN docker-php-ext-install exif
 
 # Install xdebub
-RUN git clone git://github.com/xdebug/xdebug.git && \
-        cd xdebug && phpize && ./configure --enable-xdebug && make && make install
+RUN curl -L https://github.com/xdebug/xdebug/archive/2.6.1.tar.gz -o 2.6.1.tar.gz && \
+        tar -xvf 2.6.1.tar.gz && \
+        cd xdebug-2.6.1 && phpize && ./configure --enable-xdebug && make && make install
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- \
