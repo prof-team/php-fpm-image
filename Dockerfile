@@ -74,7 +74,7 @@ RUN pecl install xdebug
 RUN pecl install redis && docker-php-ext-enable redis
 
 # Install composer
-RUN curl -sS https://getcomposer.org/download/1.10.17/composer.phar | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/download/1.10.17/composer.phar | php -- --install-dir=/usr/local/bin --filename=composer --1
 
 # install xhprof
 RUN rm -rf /var/xhprof && \
