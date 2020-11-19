@@ -49,8 +49,8 @@ if [ -n "$INI_MAX_EXECUTION_TIME" ]; then
     sed -i "s/request_terminate_timeout.*/request_terminate_timeout = $INI_MAX_EXECUTION_TIME/" /usr/local/etc/php-fpm.d/www.conf
 fi
 
-# Enable xdebug
-if [ -z "$INI_XDEBUG" ] || [ "$INI_XDEBUG" -eq 0 ]; then
+# Disable xdebug
+if [ -z "$XDEBUG_CONFIG" ]; then
     rm -f /usr/local/etc/php/conf.d/xdebug.ini
 fi
 
