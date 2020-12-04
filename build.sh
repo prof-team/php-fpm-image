@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t profteam/php-fpm:7.4 .
+docker build -t profteam/php-fpm:8.0 .
