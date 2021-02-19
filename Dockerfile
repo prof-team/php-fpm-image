@@ -85,7 +85,7 @@ RUN apt-get install -y \
 RUN docker-php-ext-install exif
 
 # Install xdebub
-RUN pecl install xdebug
+RUN pecl install xdebug-3
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- \
