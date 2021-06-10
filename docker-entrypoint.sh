@@ -32,6 +32,7 @@ fi
 # setup INI configs
 if [ -n "$INI_OPCACHE_STATUS" ]; then
     sed -i "s/opcache\.enable.*/opcache\.enable=$INI_OPCACHE_STATUS/" /usr/local/etc/php/conf.d/opcache.ini
+    sed -i "s/opcache\.enable_cli.*/opcache\.enable_cli=$INI_OPCACHE_STATUS/" /usr/local/etc/php/conf.d/opcache.ini
 fi
 if [ -n "$INI_UPLOAD_MAX_SIZE" ]; then
     sed -i "s/post_max_size.*/post_max_size=$INI_UPLOAD_MAX_SIZE/" /usr/local/etc/php/conf.d/upload.ini
