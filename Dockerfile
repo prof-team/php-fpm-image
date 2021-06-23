@@ -97,6 +97,10 @@ RUN curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer
     chmod a+x php-cs-fixer && \
     mv php-cs-fixer /usr/local/bin/php-cs-fixer
 
+# install youtube downloader
+RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && \
+    chmod a+rx /usr/local/bin/youtube-dl
+
 RUN apt-get clean && apt-get autoclean && apt-get autoremove -y
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN mkdir -p /var/log/php
