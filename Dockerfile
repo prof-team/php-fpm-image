@@ -76,6 +76,11 @@ RUN pecl install redis && docker-php-ext-enable redis
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --1
 
+# install php-cs-fixer
+RUN curl -L https://cs.symfony.com/download/php-cs-fixer-v3.phar -o php-cs-fixer && \
+    chmod a+x php-cs-fixer && \
+    mv php-cs-fixer /usr/local/bin/php-cs-fixer
+
 # install xhprof
 RUN rm -rf /var/xhprof && \
     mkdir /var/xhprof && \
