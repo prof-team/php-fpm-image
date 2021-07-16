@@ -68,7 +68,7 @@ RUN apt-get install -y \
 RUN docker-php-ext-install exif
 
 # Install xdebub
-RUN pecl install xdebug
+RUN pecl install xdebug-2.9.0
 
 # Install redis
 RUN pecl install redis && docker-php-ext-enable redis
