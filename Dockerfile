@@ -1,6 +1,8 @@
 FROM php:7.0-fpm
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get upgrade -y
+
+RUN apt-get install -y \
         cron \
         python-pip \
         nano \

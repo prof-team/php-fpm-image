@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t profteam/php-fpm:7.0 .
+docker build --pull --no-cache -t profteam/php-fpm:7.0 .
