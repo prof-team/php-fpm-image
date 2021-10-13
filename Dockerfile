@@ -68,7 +68,7 @@ RUN pecl install apcu \
 # Install mongodb
 RUN apt-get install -y \
         libssl-dev \
-    && pecl install mongodb \
+    && pecl install mongodb-1.9.2 \
     && docker-php-ext-enable mongodb
 
 # Install ldap
