@@ -2,7 +2,7 @@
 
 1. Pull image from [docker hub](https://hub.docker.com/r/profteam/php-fpm)
 
-`docker pull profteam/php-fpm`
+`docker pull profteam/php-fpm:7.1`
 
 2. Now you can run image
 
