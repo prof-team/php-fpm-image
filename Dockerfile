@@ -12,7 +12,8 @@ RUN apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libmcrypt-dev \
-        libpng-dev
+        libpng-dev \
+        procps
 
 RUN pip install supervisor \
     && pip install superslacker
